@@ -1,5 +1,5 @@
-from FileToHex import *
-from Video import *
+from Core.FileToHex import *
+from Core.Video import *
 
 if __name__ == "__main__":
     try:
