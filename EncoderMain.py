@@ -1,14 +1,13 @@
-from Core.FileToHex import *
-from Core.Video import *
+from Core.FIleOct import convert_oct
+from Core.Video import create_video
 
 if __name__ == "__main__":
     try:
         print("Input Path:")
-        file_path = input()  # Use a raw string to avoid Unicode escape error
+        file_path = input()
         output_video_path = r'OutputVideo.mp4'
         
-        hex_string = convert_hex(file_path)
-
+        hex_string = convert_oct(file_path)
         if hex_string is not None:
             print("Processing...")
             create_video(hex_string, output_video_path)
@@ -20,4 +19,4 @@ if __name__ == "__main__":
         print("\nExecution interrupted by user.")
 
     except Exception as ex:
-        print(f"An unexpected error occurred: {ex}")
+        print(f"An unexpected errQor occurred: {ex}")

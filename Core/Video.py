@@ -1,14 +1,14 @@
-def create_video(hex_string, output_video_path):
+def create_video(oct_string, output_video_path):
     import cv2
     import numpy as np
     # Calculate the dimensions of the final image (720x1080)
     image_width = 1080
     image_height = 720
-    block_size = 4
+    block_size = 8
     fps = 10
 
     # Calculate the number of blocks needed based on the length of the hex string
-    num_blocks = len(hex_string) // 3
+    num_blocks = len(oct_string) // 3
     blocks_per_row = image_width // block_size
 
     # Calculate the maximum number of blocks per image
@@ -27,9 +27,10 @@ def create_video(hex_string, output_video_path):
 
         # Paint each 4x4 block with the hex values sequentially
         for j in range(min(max_blocks_per_image, num_blocks - i)):
-            r_value = int(hex_string[(i + j) * 3], 16) * 15
-            g_value = int(hex_string[(i + j) * 3 + 1], 16) * 15
-            b_value = int(hex_string[(i + j) * 3 + 2], 16) * 15
+            r_value = int(oct_string[(i + j) * 3], 8) * 31
+            g_value = int(oct_string[(i + j) * 3 + 1], 8) * 31
+            b_value = int(oct_string[(i + j) * 3 + 2], 8) * 31
+
 
             row = j // blocks_per_row
             col = j % blocks_per_row
@@ -54,3 +55,21 @@ def create_video(hex_string, output_video_path):
 
     # Release the video writer
     video_writer.release()
+
+def vidToOct(input_video_path, image_width=1080, image_height=720, block_size=8):
+    import cv2
+    oct_str = ""
+    video = cv2.VideoCapture(input_video_path)
+    frames = video.get(cv2.CAP_PROP_FRAME_COUNT)
+    for i in range(int(frames)):
+        video.set(cv2.CAP_PROP_POS_FRAMES, i)
+        frame = video.read()[1]
+        y = 4
+        while y < image_height:
+            x = 4
+            while x < image_width:
+                rgb = frame[int(y)][int(x)]
+                oct_str+=str(round(rgb[2]/31))+str(round(rgb[1]/31))+str(round(rgb[0]/31))
+                x+=block_size
+            y+=block_size
+    return oct_str
