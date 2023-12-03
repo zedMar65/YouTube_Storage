@@ -1,41 +1,42 @@
-# Using YouTube as Data storrage
+# Using YouTube as Data Storage
 ---
-## Intro
 
+## Intro
 ##### Why?
 - Unlimited video upload capacity
 - Free
+
 ##### How?
-1. Converting a file or information to a video by using hex
-2. Uploading that vido to YouTube
-3. Using a Decoder that waches the video to decode it into the starting file or information
+1. Converting a file or information to a video
+2. Uploading that video to YouTube
+3. Download the video with youtube to mp3
+4. Decode the video using a decoder
+
 ---
-## Usage manual
+
+## Usage Manual
 
 ##### Encrypting
-Use EncoderMain.py and input the file you want to Encode into video, if you recieve any errors, please report them. Egzample:
-<pre>
- >> python3 EncoderMain.py
-    Input Path:
- >> Video.py
-    Processing...
-    Success, file saved as OutputVideo.mp4
-</pre>
+Use Encoder and input the file you want to encode into a video. If you receive any errors, please report them. Example:
+```bash
+python3 EncoderMain.py
+Input Path:
+YourFile.test
+Processing...
+Success, file saved as OutputVideo.mp4
+```
 ##### Decrypting
-Open the youtube video on FullScreen, on puse, first frame, 720p, louch the DecoderMain.py, wait untill the video comes to an end. Egzample:
-<pre>
- >> python3 DecoderMain.py
- 
-</pre>
+Download the video, run the decoder program. Egzample:
+```bash
+python3 DecoderMain.py
+Input Video Path:
+OutputVideo.mp4
+Processing...
+File 'YourFile.test' successfully created and written.
+```
+
 ---
 ## ToDo
 * Fix Grammar mistakes
-* Write Decoder
-* Document
 * Make YouTube Video
 * Test
-##### ToDo Decoder
- - Take screenshots 10fps
- - Convert screenshots to hex
- - Store hex in File
- - Save File
