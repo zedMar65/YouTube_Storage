@@ -1,4 +1,4 @@
-from Core.FIleOct import convert_oct
+from Core.FIleOct import convertToBin
 from Core.Video import create_video
 
 if __name__ == "__main__":
@@ -7,10 +7,11 @@ if __name__ == "__main__":
         file_path = input()
         output_video_path = r'OutputVideo.mp4'
         
-        hex_string = convert_oct(file_path)
-        if hex_string is not None:
+        Bin_String = convertToBin(file_path)
+        if Bin_String is not None:
             print("Processing...")
-            create_video(hex_string, output_video_path)
+            print(Bin_String)
+            create_video(Bin_String, output_video_path)
             print("Success, file saved as", output_video_path)
         else:
             print("Canceling...")

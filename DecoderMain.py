@@ -1,4 +1,4 @@
-from Core.FIleOct import octToFile
+from Core.FIleOct import binaryToFile
 from Core.Video import vidToOct
     
 if __name__ == "__main__":
@@ -6,8 +6,8 @@ if __name__ == "__main__":
         print("Input Video Path:")
         input_video_path = input()
         print("Processing...")
-        oct_str = vidToOct(input_video_path)
-        octToFile(oct_str)
+        binStr = vidToOct(input_video_path)
+        binaryToFile(binStr)
     except KeyboardInterrupt:
         print("\nExecution interrupted by user.")
 
