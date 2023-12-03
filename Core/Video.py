@@ -4,7 +4,7 @@ def create_video(binStr, output_video_path):
     # Calculate the dimensions of the final image (720x1080)
     image_width = 1080
     image_height = 720
-    block_size = 8
+    block_size = 4
     fps = 10
 
     # Calculate the number of blocks needed based on the length of the hex string
@@ -64,7 +64,7 @@ def create_video(binStr, output_video_path):
     # Release the video writer
     video_writer.release()
 
-def vidToOct(input_video_path, image_width=1080, image_height=720, block_size=8):
+def vidToOct(input_video_path, image_width=1080, image_height=720, block_size=4):
     import cv2
     binStr = ""
     video = cv2.VideoCapture(input_video_path)
@@ -72,9 +72,9 @@ def vidToOct(input_video_path, image_width=1080, image_height=720, block_size=8)
     for i in range(int(frames)):
         video.set(cv2.CAP_PROP_POS_FRAMES, i)
         frame = video.read()[1]
-        y = 4
+        y = int(block_size/2)
         while y < image_height:
-            x = 4
+            x = int(block_size/2)
             while x < image_width:
                 rgb = frame[int(y)][int(x)]
                 binStr+=str(round(rgb[2]/127)-1)+str(round(rgb[1]/127)-1)+str(round(rgb[0]/127)-1)

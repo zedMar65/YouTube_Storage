@@ -10,7 +10,6 @@ if __name__ == "__main__":
         Bin_String = convertToBin(file_path)
         if Bin_String is not None:
             print("Processing...")
-            print(Bin_String)
             create_video(Bin_String, output_video_path)
             print("Success, file saved as", output_video_path)
         else:
